@@ -142,7 +142,7 @@
                     url: 'books/deleteDef/' + $("#idBooks").val(),
                     type: 'DELETE',
                     data: {word: $('#deleteWord').text()},
-                    success: function() { getBooks() }
+                    success: function() { getBooks($('#idBooks').val()) }
                 })
           }
 
@@ -151,7 +151,7 @@
                     url: 'books/editDef/' + $("#idBooks").val(),
                     type: 'POST',
                     data: {word: $('#editWord').text(), notes: $('#editNotes').val()},
-                    success: function() { getBooks() }
+                    success: function() { getBooks($('#idBooks').val()) }
                 })
           }
 
