@@ -4,5 +4,6 @@ git remote set-url --push origin https://dungeontiger:48e9ccaf6e6fce08ec1ad2cca2
 git checkout -b updates
 git add .
 git commit -m "lexicon updates"
-git push
+git push --set-upstream origin updates
 git checkout main
+git branch -d updates
