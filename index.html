@@ -165,7 +165,7 @@
 
           function showEditDef(word) {
             $('#editWord').text(word)
-            $('#editNotes').text(definitions[word])
+            $('#editNotes').val(definitions[word])
             var editDef = new bootstrap.Modal(document.getElementById('editDef'), {
                 keyboard: false
             });
