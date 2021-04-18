@@ -1,8 +1,7 @@
 from flask import Flask, jsonify, request
 import os
-import json
 import psycopg2
-
+from collections import OrderedDict
 
 app = Flask(__name__)
 
@@ -93,12 +92,15 @@ def getBook(book):
     book_id = cur.fetchone()[0]
     cur.execute("SELECT term, definition FROM definition WHERE book_id='{}' ORDER BY term".format(book_id))
     row = cur.fetchone()
-    ordered = {}
+    terms = {}
     while row is not None:
-        ordered[row[0]] = row[1]
+        terms[row[0]] = row[1]
         row = cur.fetchone()
     cur.close()
     conn.close()
+    ordered = OrderedDict()
+    for key in sorted(terms.keys(), key=str.casefold):
+        ordered[key] = terms[key]
     return jsonify(ordered)
 
 

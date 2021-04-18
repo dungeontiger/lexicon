@@ -101,6 +101,9 @@
                     $("#definitions").empty()
                     definitions = d
                     keys = Object.keys(d)
+                    keys = keys.sort(function(a, b) {
+                        return a.toLowerCase().localeCompare(b.toLowerCase());
+                    });
                     for (var k in keys) {
                         $("#definitions").append('<tr><td style="white-space: nowrap;">' + keys[k] + '</td><td>' + d[keys[k]] + '</td><td style="white-space: nowrap;">' + 
                             '<button class="btn btn-secondary" onclick="showEditDef(\'' + keys[k] + '\')"><i class="bi bi-pencil"></i></button>' + 
